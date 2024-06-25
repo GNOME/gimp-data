@@ -25,9 +25,15 @@ def export_scaled_img(image, target_width, target_height, export_path):
     offy = (target_height - new_height) / 2
   img.scale(new_width, new_height)
   img.resize(target_width, target_height, offx, offy)
-  # XXX: should we rather use the average color as border?
-  black = Gegl.Color.new("black")
-  Gimp.context_set_background(black)
+
+  # we use this specific color as bg to avoid ugly leaks on the Installer buttons
+  grey = Gegl.Color.new("black")
+  grey.set_rgba(0.941, 0.941, 0.941, 1.0)
+  color_babl = grey.get_format()
+  color_bytes = grey.get_bytes(Babl.format("RGB u8"))
+  grey.set_bytes(color_babl, color_bytes)
+  Gimp.context_set_background(grey)
+
   drawables = img.list_selected_drawables()
   for d in drawables:
     d.resize_to_image_size()
