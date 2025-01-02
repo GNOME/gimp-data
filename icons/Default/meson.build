@@ -94,29 +94,25 @@ foreach install : install_icons
     endif
 
     # Duplicate RTL relevant icons
-    if suffix != '-symbolic.svg'
+    if suffix == '.svg'
       foreach rtl : rtl_icons
         rtl_icon     = '@0@/@1@@2@'.format(indir, rtl[0], suffix)
         rtl_sym_icon = '@0@/@1@-symbolic@2@'.format(indir, rtl[0], suffix)
-        if rtl_icon in icons
-          install_data(rtl_icon,
-                       rename: '@0@-rtl@1@'.format(rtl[1], suffix),
-                       install_dir: gimpiconsdir / theme / outdir / 'apps')
-          install_data(rtl_sym_icon,
-                       rename: '@0@-symbolic-rtl@1@'.format(rtl[1], suffix),
-                       install_dir: gimpiconsdir / theme / outdir / 'apps')
-        endif
+        install_data(rtl_icon,
+                      rename: '@0@-rtl@1@'.format(rtl[1], suffix),
+                      install_dir: gimpiconsdir / theme / outdir / 'apps')
+        install_data(rtl_sym_icon,
+                      rename: '@0@-symbolic-rtl@1@'.format(rtl[1], suffix),
+                      install_dir: gimpiconsdir / theme / outdir / 'apps')
 
         rtl_icon     = '@0@/@1@@2@'.format(indir, rtl[1], suffix)
         rtl_sym_icon = '@0@/@1@-symbolic@2@'.format(indir, rtl[1], suffix)
-        if rtl_icon in icons
-          install_data(rtl_icon,
-                       rename: '@0@-rtl@1@'.format(rtl[0], suffix),
-                       install_dir: gimpiconsdir / theme / outdir / 'apps')
-          install_data(rtl_sym_icon,
-                       rename: '@0@-symbolic-rtl@1@'.format(rtl[0], suffix),
-                       install_dir: gimpiconsdir / theme / outdir / 'apps')
-        endif
+        install_data(rtl_icon,
+                      rename: '@0@-rtl@1@'.format(rtl[0], suffix),
+                      install_dir: gimpiconsdir / theme / outdir / 'apps')
+        install_data(rtl_sym_icon,
+                      rename: '@0@-symbolic-rtl@1@'.format(rtl[0], suffix),
+                      install_dir: gimpiconsdir / theme / outdir / 'apps')
       endforeach
     endif
   endforeach
