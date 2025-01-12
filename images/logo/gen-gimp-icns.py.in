@@ -1,8 +1,9 @@
 import os
 import sys
+import gi
 
 gi.require_version('Gegl', '0.4')
-from gi.repository import Gegl
+from gi.repository import Gegl, Gio, Gimp
 
 big_logo    = '@SRCDIR@/gimp-logo-macos.svg'
 small_logo  = '@SRCDIR@/gimp-logo-macos-small.svg'
@@ -23,7 +24,6 @@ for size in sizes:
 
   config.set_property("width",  size)
   config.set_property("height", size)
-  Gimp.Procedure.run(procedure, config)
   v = Gimp.Procedure.run(procedure, config)
 
   if v.index(0) != Gimp.PDBStatusType.SUCCESS:
@@ -35,14 +35,20 @@ for size in sizes:
   image.insert_layer(layer, None, 0)
   tmp_image.delete()
 
-procedure = Gimp.get_pdb().lookup_procedure("file-icns-export")
-config    = procedure.create_config()
-drawables = image.get_selected_drawables()
-config.set_property("image", image)
-config.set_property("file", Gio.file_new_for_path(output_path))
-Gimp.Procedure.run(procedure, config)
+# Convert to standard sRGB profile
+convert_profile_proc = Gimp.get_pdb().lookup_procedure("gimp-image-convert-color-profile")
+convert_profile_conf = convert_profile_proc.create_config()
+convert_profile_conf.set_property("image", image)
+convert_profile_conf.set_property("to_profile", "sRGB IEC61966-2.1")
+Gimp.Procedure.run(convert_profile_proc, convert_profile_conf)
 
-v = Gimp.Procedure.run(procedure, config)
+# Export to ICNS
+export_proc = Gimp.get_pdb().lookup_procedure("file-icns-export")
+export_conf = export_proc.create_config()
+export_conf.set_property("image", image)
+export_conf.set_property("file", Gio.file_new_for_path(output_path))
+
+v = Gimp.Procedure.run(export_proc, export_conf)
 
 if v.index(0) != Gimp.PDBStatusType.SUCCESS:
   sys.exit(os.EX_SOFTWARE)
