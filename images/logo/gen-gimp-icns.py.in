@@ -36,12 +36,12 @@ for size in sizes:
   tmp_image.delete()
 
 # Convert to standard sRGB profile
-color_profile = Gimp.ColorProfile.new_from_file("/System/Library/ColorSync/Profiles/sRGB Profile.icc")
+profile_file = Gio.file_new_for_path("/System/Library/ColorSync/Profiles/sRGB Profile.icc")
 
-convert_profile_proc = Gimp.get_pdb().lookup_procedure("gimp-image-convert-color-profile")
+convert_profile_proc = Gimp.get_pdb().lookup_procedure("gimp-image-convert-color-profile-from-file")
 convert_profile_conf = convert_profile_proc.create_config()
 convert_profile_conf.set_property("image", image)
-convert_profile_conf.set_property("profile", color_profile)
+convert_profile_conf.set_property("file", profile_file)
 Gimp.Procedure.run(convert_profile_proc, convert_profile_conf)
 
 # Export to ICNS
