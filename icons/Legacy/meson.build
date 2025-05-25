@@ -491,6 +491,7 @@ legacy_temporary_scalable = [
   '../Default/scalable/gimp-symmetry.svg',
   '../Default/scalable/gtk-ok.svg',
   '../Default/scalable/gtk-no.svg',
+  '../Default/scalable/gtk-cancel.svg',
   '../Default/scalable/gtk-select-color.svg',
   '../Default/scalable/gtk-select-font.svg',
 ]
