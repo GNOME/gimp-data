@@ -15,7 +15,7 @@ logo_png = custom_target('gimp-logo.png',
                          input : 'gimp-logo-shadow.svg',
                          output: 'gimp-logo.png',
                          command: [
-                           colorsvg2png, '@INPUT@', '@OUTPUT@', '128',
+                           'bash', '@INPUT@', '@OUTPUT@', '128',
                          ],
                          install: true,
                          install_dir: gimpdatadir / 'images')
