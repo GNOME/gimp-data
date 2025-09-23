@@ -31,3 +31,5 @@ if get_option('windows-installer')
 endif
 
 subdir('logo')
+
+install_data('sidrat.data', install_dir: gimpdatadir / 'images')
