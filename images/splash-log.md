@@ -68,6 +68,25 @@ The following splash images didn't make it for a stable release:
   ![Splash for GIMP 2.8](https://gitlab.gnome.org/GNOME/gimp/-/raw/b1d09cc7264899b8fec50a2e3a20f57506fa1da8/data/images/gimp-splash.png)
 
 # Development releases
+## 3.2 RCs
+
+* [GIMP 3.2.0 RC1](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/7f74eb8af2e95e425567ee5bcb30395a82b17681)
+  by Mark McCaughrean, CC by-sa 2.0.
+
+  ![Splash for GIMP 3.2.0 RC1](https://www.gimp.org/news/2025/11/17/gimp-3-2-RC1-released/gimp-splash.jpeg)
+
+## 3.1 series
+
+* [GIMP 3.1.4](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/a53c0fecc3e3daf1332891caaaa82370862f3347)
+  by Michael Schumacher (photography) and Aryeom (editing, design), CC by-sa 4.0.
+
+  ![Splash for GIMP 3.1.4](https://www.gimp.org/news/2025/09/01/gimp-3-1-4-released/gimp-splash.jpg)
+
+* [GIMP 3.1.2](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/23998fee749b456f1062ce05e02e82911586e46c)
+  by Ville Pätsi, CC by-sa 4.0.
+
+  ![Splash for GIMP 3.1.4](https://www.gimp.org/news/2025/06/23/gimp-3-1-2-released/gimp-splash.jpg)
+
 ## 3.0 RCs
 
 * [GIMP 3.0.0 RC2](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/adf34d068663fa17758d8fb1af9a427e7f34fe1e)
