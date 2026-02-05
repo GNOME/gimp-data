@@ -2,6 +2,8 @@ import pathlib
 import os
 import sys
 
+@VARS@
+
 image     = Gimp.get_images()[0]
 procedure = Gimp.get_pdb().lookup_procedure("file-bmp-export")
 if procedure is None:
@@ -71,7 +73,7 @@ def export_cropped_img(image, target_width, target_height, export_path):
   drawables = img.get_selected_drawables()
   for d in drawables:
     d.resize_to_image_size()
-  offx      = new_width * 0.6
+  offx      = new_width * offset_percent
   img.crop(target_width, target_height, offx, 0)
 
   config.set_property("image", img)
@@ -97,7 +99,7 @@ export_blurred_img(image, 314, 'build/windows/installer/installsplash_bottom.bmp
 # Avoid the images being re-generated at each build.
 pathlib.Path('gimp-data/images/stamp-installsplash.bmp').touch()
 
-# Needed by the installer .iss script to maintain the splash aspect ratio: https://gitlab.gnome.org/GNOME/gimp/-/issues/11677 
+# Needed by the installer .iss script to maintain the splash aspect ratio: https://gitlab.gnome.org/GNOME/gimp/-/issues/11677
 with open('build/windows/installer/splash-dimensions.h', 'w') as f:
   f.write('#define GIMP_SPLASH_WIDTH  {}\n'.format(image.get_width()))
   f.write('#define GIMP_SPLASH_HEIGHT {}\n'.format(image.get_height()))

@@ -61,6 +61,7 @@ Our process when updating it is to:
 * add permalinks to the [splash history](splash-log.md) to the new splash image,
   mentionning the author and the license, to keep an easily accessible trace to
   the old splash image;
+* change the values of `gimp-splash.crop` if needed;
 * commit and push the change, not forgetting to mention again the author and the
   license in the commit message.
 
