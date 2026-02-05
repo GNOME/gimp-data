@@ -1,3 +1,6 @@
+crop_conf = configuration_data()
+crop_conf.set('VARS', fs.read('gimp-splash.crop'))
+
 ## Splash Image and Welcome Dialog ##
 
 splash = custom_target('gimp-splash.png',
@@ -17,8 +20,13 @@ splash = custom_target('gimp-splash.png',
 ## Windows Installer's Splash Image and Intro Banner ##
 
 if get_option('windows-installer')
+  splash2installer_py = configure_file(
+    input: 'splash2installer.py.in',
+    output: 'splash2installer.py',
+    configuration: crop_conf
+  )
   installsplash = custom_target('installsplash.bmp',
-                                input : [ 'splash2installer.py' ],
+                                input : [ splash2installer_py ],
                                 output: [ 'stamp-installsplash.bmp', ],
                                 depends: [ gimp_exe_depends ],
                                 command: [ gimp_exe, '-nidfs',
