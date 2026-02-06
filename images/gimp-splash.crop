@@ -1,2 +1,7 @@
 # Horizontal position of the crop on Installer's install-end*.bmp
 offset_percent = 0.6
+
+# Horizontal and vertical position and size of the crop on DMG's gimp-dmg.png
+offset_macos_x = -1340
+offset_macos_y = -306
+target_macos_h = 1254
