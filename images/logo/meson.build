@@ -432,7 +432,7 @@ if platform_osx and get_option('dmg')
 
   ## gimp-dmg.png (macOS) ##
   gen_gimp_dmg_conf = configuration_data()
-  gen_gimp_dmg_conf.set('VARS',fs.read('gimp-splash.crop'))
+  gen_gimp_dmg_conf.set('VARS',fs.read('../gimp-splash.crop'))
   gen_gimp_dmg_conf.merge_from(gen_conf)
   gen_gimp_dmg_py = configure_file(input : 'gen-gimp-dmg.py.in',
                                    output : 'gen-gimp-dmg.py',
