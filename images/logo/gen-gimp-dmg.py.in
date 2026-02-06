@@ -2,14 +2,17 @@ import pathlib
 import os
 import sys
 
+@VARS@
+
 base_path   = '@SRCDIR@/../macos/gimp-dmg.xcf.xz'
 wilber_path = '@SRCDIR@/gimp-logo-shadow.svg'
+splash_path = '@SRCDIR@/../gimp-splash.xcf.xz'
 output_path = '@BUILDDIR@/gimp-dmg.png'
 wilber_size = 155
 offset_y    = 77
 
 
-# 1. Loading the background image.
+# 1. Loading the base dmg elements.
 procedure = Gimp.get_pdb().lookup_procedure("gimp-file-load")
 config    = procedure.create_config()
 config.set_property("file", Gio.file_new_for_path(base_path))
@@ -35,7 +38,23 @@ image.insert_layer(layer2, None, 0)
 layer2.set_offsets((image.get_width() - wilber_size) / 2, offset_y)
 tmp_image.delete()
 
-# 3. Merging the background and Wilber on top.
+# 3. Loading background from cropped splash image.
+procedure = Gimp.get_pdb().lookup_procedure("gimp-file-load")
+config    = procedure.create_config()
+config.set_property("file", Gio.file_new_for_path(splash_path))
+v = Gimp.Procedure.run(procedure, config)
+if v.index(0) != Gimp.PDBStatusType.SUCCESS:
+  sys.exit(70)
+tmp_image = v.index(1)
+drawables = tmp_image.get_selected_drawables()
+layer6 = Gimp.Layer.new_from_drawable (drawables[0], image)
+image.insert_layer(layer6, None, 6)
+layer6.set_offsets(offset_macos_x, offset_macos_y)
+target_height = target_macos_h
+new_width = int(layer6.get_width() * (target_macos_h / layer6.get_height()))
+layer6.scale(new_width, target_macos_h, False)
+
+# 4. Merging the background and Wilber on top.
 image.merge_down(layer2, Gimp.MergeType.CLIP_TO_IMAGE)
 procedure = Gimp.get_pdb().lookup_procedure("file-png-export")
 config    = procedure.create_config()
