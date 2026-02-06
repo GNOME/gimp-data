@@ -415,12 +415,9 @@ if platform_osx and get_option('dmg')
                                 env: gimp_run_env)
 
   ## .VolumeIcon.icns (macOS) ##
-  gen_gimp_dmg_icns_conf = configuration_data()
-  gen_gimp_dmg_icns_conf.set('VARS',fs.read('gimp-splash.crop'))
-  gen_gimp_dmg_icns_conf.merge_from(gen_conf)
   gen_gimp_dmg_icns_py = configure_file(input : 'gen-gimp-dmg-icns.py.in',
                                         output : 'gen-gimp-dmg-icns.py',
-                                        configuration : gen_gimp_dmg_icns_conf)
+                                        configuration : gen_conf)
   gimp_dmg_icns = custom_target('.VolumeIcon.icns',
                                 input : [ gen_gimp_dmg_icns_py ],
                                 depend_files: [ 'gimp-logo.svg', 'dmg-base.svg' ],
@@ -434,9 +431,12 @@ if platform_osx and get_option('dmg')
                                 env: gimp_run_env)
 
   ## gimp-dmg.png (macOS) ##
+  gen_gimp_dmg_conf = configuration_data()
+  gen_gimp_dmg_conf.set('VARS',fs.read('gimp-splash.crop'))
+  gen_gimp_dmg_conf.merge_from(gen_conf)
   gen_gimp_dmg_py = configure_file(input : 'gen-gimp-dmg.py.in',
                                    output : 'gen-gimp-dmg.py',
-                                   configuration : gen_conf)
+                                   configuration : gen_gimp_dmg_conf)
   gimp_dmg = custom_target('gimp-dmg.png',
                            input : [ gen_gimp_dmg_py ],
                            depend_files: [ 'gimp-logo-shadow.svg', '../macos/gimp-dmg.xcf.xz' ],
