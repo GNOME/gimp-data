@@ -44,40 +44,36 @@ requirements:
         This "RC" text layer will stay untouched during the whole RC
         period and will be automatically removed by our build scripts on
         the actual release.
-- [ ] Crop Information: the splash image will be used, cropped, in the
-      Windows installer and the macOS DMG background. The splash artist
-      must therefore provide some metadata for the scripts to know where
-      to crop.
-      1. For the Windows Installer, your splash image will be cropped to
-         a ratio of 164:314 (nearly twice taller column-image), using
-         the full height of the source image. Therefore the information
-         we need is the X offset where the crop will happen (in pixel or
-         in percentage of the full width).
+- [ ] Crop Information:
+  1. For the Windows Installer, your splash image will be cropped to a
+     ratio of 164:314 (nearly twice taller column-image), using the full
+     height of the source image. Please tell the developers the X offset
+     where the crop will happen.
 
-         Example: say your splash image is 3840×2160. If you tell us the
-         crop offset should happen at 30% of the image, the image shown
-         in our installer will be the crop with top-left pixel starting
-         at coordinates `(1152, 0)`, height 2160 pixels and therefore
-         width `2160 / 314 × 164`, i.e. 1128 pixels.
-      2. For the macOS DMG background, we will need a crop of ratio
-         640:480 within your image. The end result will be used as a
-         640×480 pixels but your suggested crop may be bigger, as long
-         as it has the right ratio. Please tell us:
-         * if you want the crop to work on a specific layer (which can
-           be a group layer too), please tell us which it is. This can
-           be useful for instance if you want to crop diregarding the
-           text layers. Please don't use this feature to have a
-           completely different image for the DMG. The objective is to
-           have consistency in graphics.
-         * the X, Y offset for the top-left point of the crop.
-         * the width/height of the crop.
-      3. *Note for developers*: edit `images/gimp-splash.crop`.
-         * `offset_percent` will be the X offset for the Windows
-           Installer image.
-         * `offset_macos_x` and `offset_macos_y` will be the provided X,
-           Y offset for the macOS DMG, set in negative.
-         * `target_macos_h` will be the crop height (width will be
-           computed by 640:480 ratio).
+     Example: say your splash image is 3840×2160. If you tell us the
+     crop offset should happen at 30% of the image, the image shown in
+     our installer will be the crop with top-left pixel starting at
+     coordinates `(1152, 0)`, height 2160 pixels and therefore width
+     `2160 / 314 × 164`, i.e. 1128 pixels.
+  2. For the macOS DMG background, your splash imagge will be cropped to
+     any size with a ratio of 640:480.
+    * if you want the crop to work on a specific layer (which can
+      be a group layer too), please tell us which it is. This can
+      be useful for instance if you want to crop diregarding the
+      text layers. Please don't use this feature to have a
+      completely different image for the DMG. The objective is to
+      have consistency in graphics.
+    * the X, Y offset for the top-left point of the crop.
+    * the width/height of the crop.
+  3. *Note for developers*: edit `images/gimp-splash.crop`.
+    * `offset_percent` will be the X offset for the Windows
+      Installer image.
+    * `layer_macos` will be the name of the layer to use for the macOS
+      DMG background. Set to `None` to use the full render.
+    * `offset_macos_x` and `offset_macos_y` will be the provided X,
+      Y offset for the macOS DMG, set in negative.
+    * `target_macos_h` will be the crop height (width will be
+      computed by 640:480 ratio).
 
 ### Update procedure
 
