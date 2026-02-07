@@ -63,6 +63,12 @@ requirements:
          640:480 within your image. The end result will be used as a
          640×480 pixels but your suggested crop may be bigger, as long
          as it has the right ratio. Please tell us:
+         * if you want the crop to work on a specific layer (which can
+           be a group layer too), please tell us which it is. This can
+           be useful for instance if you want to crop diregarding the
+           text layers. Please don't use this feature to have a
+           completely different image for the DMG. The objective is to
+           have consistency in graphics.
          * the X, Y offset for the top-left point of the crop.
          * the width/height of the crop.
       3. *Note for developers*: edit `images/gimp-splash.crop`.
