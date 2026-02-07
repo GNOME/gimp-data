@@ -46,8 +46,11 @@ v = Gimp.Procedure.run(procedure, config)
 if v.index(0) != Gimp.PDBStatusType.SUCCESS:
   sys.exit(70)
 tmp_image = v.index(1)
-drawables = tmp_image.get_selected_drawables()
-layer6 = Gimp.Layer.new_from_drawable (drawables[0], image)
+if layer_macos is not None:
+  drawable = tmp_image.get_layer_by_name(layer_macos)
+else:
+  drawable = tmp_image.flatten()
+layer6 = Gimp.Layer.new_from_drawable (drawable, image)
 image.insert_layer(layer6, None, 6)
 layer6.set_offsets(offset_macos_x, offset_macos_y)
 target_height = target_macos_h

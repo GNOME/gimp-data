@@ -2,6 +2,7 @@
 offset_percent = 0.6
 
 # Horizontal and vertical position and size of the crop on DMG's gimp-dmg.png
+layer_macos    = 'Background'
 offset_macos_x = -1340
 offset_macos_y = -306
 target_macos_h = 1254
