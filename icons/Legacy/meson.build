@@ -366,6 +366,8 @@ legacy_icons_256 = [
   '256/gimp-wilber.png',
 ]
 legacy_tools_scalable = [
+  '../Default/scalable/gimp-curve-point-corner.svg',
+  '../Default/scalable/gimp-curve-point-smooth.svg',
   'scalable/gimp-gegl.svg',
   'scalable/gimp-tool-airbrush.svg',
   'scalable/gimp-tool-align.svg',
