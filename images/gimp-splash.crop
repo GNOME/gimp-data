@@ -1,4 +1,5 @@
 # Horizontal position of the crop on Installer's install-end*.bmp
+layer_windows  = 'Background'
 offset_percent = 0.6
 
 # Horizontal and vertical position and size of the crop on DMG's gimp-dmg.png
