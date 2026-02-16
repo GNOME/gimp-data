@@ -47,19 +47,25 @@ requirements:
 - [ ] Crop Information:
   1. For the Windows Installer, your splash image will be cropped to a
      ratio of 164:314 (nearly twice taller column-image), using the full
-     height of the source image. Please tell the developers the X offset
-     where the crop will happen.
+     height of the source image. Please tell us:
+    * which layer to crop (which can be a group layer too), if you don't
+      want to use the full splash render.
+      This can be useful for instance if you want to crop disregarding
+      the text layers. Please don't use this feature to have a
+      completely different image for the DMG. The objective is to
+      have consistency in graphics.
+    * the X offset where the crop will happen.
 
      Example: say your splash image is 3840×2160. If you tell us the
      crop offset should happen at 30% of the image, the image shown in
      our installer will be the crop with top-left pixel starting at
      coordinates `(1152, 0)`, height 2160 pixels and therefore width
      `2160 / 314 × 164`, i.e. 1128 pixels.
-  2. For the macOS DMG background, your splash imagge will be cropped to
+  2. For the macOS DMG background, your splash image will be cropped to
      any size with a ratio of 640:480. Please tell us:
     * which layer to crop (which can be a group layer too), if you don't
       want to use the full splash render.
-      This can be useful for instance if you want to crop diregarding
+      This can be useful for instance if you want to crop disregarding
       the text layers. Please don't use this feature to have a
       completely different image for the DMG. The objective is to
       have consistency in graphics.
