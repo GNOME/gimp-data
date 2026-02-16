@@ -360,7 +360,7 @@ endif
 # cause parallelism clashes due to install_name_tool on tools/in-build-gimp.py
 # (check that script on gimp repo for more info and issue gimp#14236 too).
 
-if platform_osx and get_option('dmg')
+if get_option('dmg')
   ## gimp.icns (macOS 15 and earlier) ##
   gen_gimp_icns_py = configure_file(input : 'gen-gimp-icns.py.in',
                                    output : 'gen-gimp-icns.py',
