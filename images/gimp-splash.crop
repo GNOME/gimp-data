@@ -2,7 +2,7 @@
 offset_percent = 0.12
 
 # Horizontal and vertical position and size of the crop on DMG's gimp-dmg.png
-layer_macos    = 'orion_sw_aligned_cropped_4k.png'
+layer_macos    = 'hh288_clean_20260108_full_4k.png #1'
 offset_macos_x = -1340
 offset_macos_y = -306
 target_macos_h = 1254
