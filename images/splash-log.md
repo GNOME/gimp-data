@@ -70,6 +70,11 @@ The following splash images didn't make it for a stable release:
 # Development releases
 ## 3.2 RCs
 
+* [GIMP 3.2.0 RC3](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/70b0fe579da3acffcf3ea28c9f3cb6d23fbe51c3)
+  by Mark McCaughrean, CC by-sa 4.0.
+
+  ![Splash for GIMP 3.2.0 RC3](https://www.gimp.org/news/2026/03/02/gimp-3-2-RC3-released/gimp-splash-3.2-rc3.jpeg)
+
 * [GIMP 3.2.0 RC2](https://gitlab.gnome.org/GNOME/gimp-data/-/commit/1e1d7077b38a29d37835de600af64a8df494ba9a)
   by Mark McCaughrean, CC by-sa 2.0.
 
