@@ -1,9 +1,10 @@
 # Horizontal position of the crop on Installer's install-end*.bmp
-layer_windows  = 'hh288_clean_20260108_full_4k.png #1'
-offset_percent = 0.12
+layer_windows  = 'orion_sw_aligned_cropped_4k.png'
+offset_percent = 0.31
 
-# Horizontal and vertical position and size of the crop on DMG's gimp-dmg.png
-layer_macos    = 'hh288_clean_20260108_full_4k.png #1'
-offset_macos_x = -1340
-offset_macos_y = -306
-target_macos_h = 1254
+# gimp-dmg.png will be a 640:480 image.
+# Please choose the crop by the top-left offset and the height.
+layer_macos    = 'orion_sw_aligned_cropped_4k.png'
+offset_macos_x = 781
+offset_macos_y = 503
+target_macos_h = 1379
