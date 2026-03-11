@@ -29,6 +29,10 @@ requirements:
       Therefore anything smaller than fullHD will look tiny and
       unsuited on a 4K or higher res display). Though aspect ratio is not a hard
       requirement, the common 16:9 ratio is recommended.
+- [ ] Color space: the artwork will be converted to sRGB. If your
+      artwork only works well in wider gamut spaces, please discuss with
+      developers first to see if the splash code can be improved to
+      cater to other spaces.
 - [ ] Loading text will appear in bottom quarter, either in black or in
       white depending on the overall surrounding lightness, so image
       contents must be adapted.
