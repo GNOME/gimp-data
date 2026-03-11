@@ -8,6 +8,12 @@ procedure = Gimp.get_pdb().lookup_procedure("file-png-export")
 config    = procedure.create_config()
 image.undo_disable()
 image.flatten()
+if not image.convert_color_profile(None, Gimp.ColorRenderingIntent.RELATIVE_COLORIMETRIC, True):
+  msg = f'ERROR: converting the image to built-in profile failed: {Gimp.get_pdb().get_last_error()}'
+  sys.stderr.write('v' * len(msg) + '\n')
+  sys.stderr.write(f'{msg}\n')
+  sys.stderr.write('^' * len(msg) + '\n')
+  sys.exit(70)
 
 if image.get_width() > 1920 or image.get_height() > 1080:
   factor = max(image.get_width() / 1920, image.get_height() / 1080)
@@ -19,6 +25,7 @@ drawables = image.get_selected_drawables()
 config.set_property("image", image)
 config.set_property("file", Gio.file_new_for_path("gimp-data/images/gimp-splash.png"))
 config.set_property("time", False)
+config.set_property("include-color-profile", False)
 config.set_property("format", "rgb8")
 retval = procedure.run(config)
 if retval.index(0) != Gimp.PDBStatusType.SUCCESS:
