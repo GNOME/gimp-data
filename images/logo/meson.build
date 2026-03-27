@@ -356,9 +356,6 @@ endif
 
 ################################################################################
 # MACOS ICONS
-# macOS icons are built one at time. Building them without 'depends:' would
-# cause parallelism clashes due to install_name_tool on tools/in-build-gimp.py
-# (check that script on gimp repo for more info and issue gimp#14236 too).
 
 if get_option('dmg')
   ## gimp.icns (macOS 15 and earlier) ##
@@ -368,7 +365,7 @@ if get_option('dmg')
   gimp_icns = custom_target('gimp.icns',
                             input : [ gen_gimp_icns_py ],
                             depend_files: [ 'gimp-logo.svg' ],
-                            depends: [ splash ],
+                            depends: [ gimp_exe_depends ],
                             output: [ 'gimp.icns' ],
                             command: [ gimp_exe,'-nidfs',
                                        '--batch-interpreter', 'python-fu-eval',
@@ -405,7 +402,7 @@ if get_option('dmg')
   fileicon_icns = custom_target('fileicon.icns',
                                 input : [ gen_fileicon_icns_py ],
                                 depend_files: [ 'gimp-logo-shadow.svg', 'fileicon-base-xcf.svg', 'fileicon-base.svg' ],
-                                depends: [ gimp_icns ],
+                                depends: [ gimp_exe_depends ],
                                 output: [ 'stamp-fileicon.icns' ],
                                 command: [ gimp_exe, '-nidfs',
                                            '--batch-interpreter', 'python-fu-eval',
@@ -421,7 +418,7 @@ if get_option('dmg')
   gimp_dmg_icns = custom_target('.VolumeIcon.icns',
                                 input : [ gen_gimp_dmg_icns_py ],
                                 depend_files: [ 'gimp-logo.svg', 'dmg-base.svg' ],
-                                depends: [ fileicon_icns ],
+                                depends: [ gimp_exe_depends ],
                                 output: [ '.VolumeIcon.icns' ],
                                 command: [ gimp_exe,'-nidfs',
                                            '--batch-interpreter', 'python-fu-eval',
@@ -440,7 +437,7 @@ if get_option('dmg')
   gimp_dmg = custom_target('gimp-dmg.png',
                            input : [ gen_gimp_dmg_py ],
                            depend_files: [ 'gimp-logo-shadow.svg', '../macos/gimp-dmg.xcf.xz' ],
-                           depends: [ gimp_dmg_icns ],
+                           depends: [ gimp_exe_depends ],
                            output: [ 'gimp-dmg.png' ],
                            command: [ gimp_exe,'-nidfs',
                                       '--batch-interpreter', 'python-fu-eval',
