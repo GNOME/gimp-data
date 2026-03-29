@@ -29,7 +29,7 @@ def find_rc_layer(layers):
         return child
   return None
 
-if Gimp.MINOR_VERSION % 2 == 0 and Gimp.MICRO_VERSION % 2 == 0:
+if Gimp.MINOR_VERSION % 2 == 0:
   rc_layer = find_rc_layer(image.get_layers())
 
   if rc_layer is None:
