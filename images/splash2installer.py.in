@@ -5,7 +5,15 @@ import sys
 
 @VARS@
 
-image     = Gimp.get_images()[0]
+images = Gimp.get_images()
+if len(images) == 0:
+  msg = f'{__file__}: ERROR: no input images'
+  sys.stderr.write('v' * len(msg) + '\n')
+  sys.stderr.write(f'{msg}\n')
+  sys.stderr.write('^' * len(msg) + '\n')
+  sys.exit(70)
+
+image     = images[0]
 procedure = Gimp.get_pdb().lookup_procedure("file-bmp-export")
 if procedure is None:
   sys.exit(os.EX_OK)

@@ -2,7 +2,15 @@ from gi.repository import Pango
 import os
 import sys
 
-image = Gimp.get_images()[0]
+images = Gimp.get_images()
+if len(images) == 0:
+  msg = f'{__file__}: ERROR: no input images'
+  sys.stderr.write('v' * len(msg) + '\n')
+  sys.stderr.write(f'{msg}\n')
+  sys.stderr.write('^' * len(msg) + '\n')
+  sys.exit(70)
+
+image = images[0]
 
 def find_rc_layer(layers):
   for layer in layers:
