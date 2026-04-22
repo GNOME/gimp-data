@@ -183,7 +183,8 @@ concept [since longer](https://github.com/ximion/appstream/issues/187).
 
 Other desktop environments or OSes may have similar concepts.
 
-We don't have such accent colors defined for GIMP logo yet. TODO.
+We have such accent colors defined for GIMP on `desktop/org.gimp.GIMP.appdata.xml.in.in`
+from `gimp` repository.
 
 ## Fun variations of the logo
 
