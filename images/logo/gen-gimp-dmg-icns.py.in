@@ -7,11 +7,14 @@ from gi.repository import Gegl
 dmg_base    = '@SRCDIR@/dmg-base.svg'
 logo        = '@SRCDIR@/gimp-logo.svg'
 output_path = '@BUILDDIR@/../../../build/macos/.VolumeIcon.icns'
+export_path = '@BUILDDIR@/../../../build/macos/'
 sizes       = [ 16, 18, 24, 32, 36, 48, 64, 128, 256, 512, 1024 ]
 
 image_size = max(sizes)
 image = Gimp.Image.new(image_size, image_size, Gimp.ImageBaseType.RGB)
 image.undo_disable()
+if not GLib.file_test(export_path, GLib.FileTest.EXISTS):
+  GLib.mkdir_with_parents(export_path, 0o755)
 
 for size in sizes:
   procedure   = Gimp.get_pdb().lookup_procedure("file-svg-load")
