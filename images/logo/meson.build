@@ -109,7 +109,8 @@ if get_option('windows-installer')
                                       '--batch-interpreter', 'python-fu-eval',
                                       '-b', '-', '--quit'],
                            feed: true,
-                           console: true,
+                           console: true, #needed to not get disordered and lost on fast ninja output and
+                                          #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: false,
                            env: gimp_run_env)
 
@@ -130,7 +131,8 @@ if get_option('windows-installer')
                                           '--batch-interpreter', 'python-fu-eval',
                                           '-b', '-', '--quit'],
                                feed: true,
-                               console: true,
+                               console: true, #needed to not get disordered and lost on fast ninja output and
+                                              #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: false,
                                env: gimp_run_env)
 
@@ -148,7 +150,8 @@ if get_option('windows-installer')
                                           '--batch-interpreter', 'python-fu-eval',
                                           '-b', '-', '--quit'],
                                feed: true,
-                               console: true,
+                               console: true, #needed to not get disordered and lost on fast ninja output and
+                                              #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: false,
                                env: gimp_run_env)
 
@@ -166,7 +169,8 @@ if get_option('windows-installer')
                                        '--batch-interpreter', 'python-fu-eval',
                                        '-b', '-', '--quit'],
                             feed: true,
-                            console: true,
+                            console: true, #needed to not get disordered and lost on fast ninja output and
+                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
                             env: gimp_run_env)
 
@@ -183,7 +187,8 @@ if get_option('windows-installer')
                                           '--batch-interpreter', 'python-fu-eval',
                                           '-b', '-', '--quit'],
                                feed: true,
-                               console: true,
+                               console: true, #needed to not get disordered and lost on fast ninja output and
+                                              #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: true,
                                env: gimp_run_env)
 endif
@@ -210,7 +215,8 @@ if get_option('ms-store')
                                      '--batch-interpreter', 'python-fu-eval',
                                      '-b', '-', '--quit'],
                           feed: true,
-                          console: true,
+                          console: true, #needed to not get disordered and lost on fast ninja output and
+                                         #to spot very hard-to-debug stuckness (see #11385 and #16202)
                           build_by_default: true,
                           env: gimp_run_env)
 
@@ -235,7 +241,8 @@ if get_option('ms-store')
                                        '--batch-interpreter', 'python-fu-eval',
                                        '-b', '-', '--quit'],
                             feed: true,
-                            console: true,
+                            console: true, #needed to not get disordered and lost on fast ninja output and
+                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
                             env: gimp_run_env)
 
@@ -261,7 +268,8 @@ if get_option('ms-store')
                                       '--batch-interpreter', 'python-fu-eval',
                                       '-b', '-', '--quit'],
                            feed: true,
-                           console: true,
+                           console: true, #needed to not get disordered and lost on fast ninja output and
+                                          #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: true,
                            env: gimp_run_env)
 
@@ -287,7 +295,8 @@ if get_option('ms-store')
                                         '--batch-interpreter', 'python-fu-eval',
                                         '-b', '-', '--quit'],
                              feed: true,
-                             console: true,
+                             console: true, #needed to not get disordered and lost on fast ninja output and
+                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                              build_by_default: true,
                              env: gimp_run_env)
 
@@ -313,7 +322,8 @@ if get_option('ms-store')
                                        '--batch-interpreter', 'python-fu-eval',
                                        '-b', '-', '--quit'],
                             feed: true,
-                            console: true,
+                            console: true, #needed to not get disordered and lost on fast ninja output and
+                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
                             env: gimp_run_env)
 
@@ -339,7 +349,8 @@ if get_option('ms-store')
                                         '--batch-interpreter', 'python-fu-eval',
                                         '-b', '-', '--quit'],
                              feed: true,
-                             console: true,
+                             console: true, #needed to not get disordered and lost on fast ninja output and
+                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                              build_by_default: true,
                              env: gimp_run_env)
 
@@ -360,7 +371,8 @@ if get_option('ms-store')
                            '--batch-interpreter', 'python-fu-eval',
                            '-b', '-', '--quit'],
                 feed: true,
-                console: true,
+                console: true, #needed to not get disordered and lost on fast ninja output and
+                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                 build_by_default: true,
                 env: gimp_run_env)
 endif
@@ -383,7 +395,8 @@ if get_option('dmg')
                                        '--batch-interpreter', 'python-fu-eval',
                                        '-b', '-', '--quit'],
                             feed: true,
-                            console: true,
+                            console: true, #needed to not get disordered and lost on fast ninja output and
+                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
                             env: gimp_run_env)
 
@@ -421,7 +434,8 @@ if get_option('dmg')
                                            '--batch-interpreter', 'python-fu-eval',
                                            '-b', '-', '--quit'],
                                 feed: true,
-                                console: true,
+                                console: true, #needed to not get disordered and lost on fast ninja output and
+                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                 build_by_default: true,
                                 env: gimp_run_env)
 
@@ -438,7 +452,8 @@ if get_option('dmg')
                                            '--batch-interpreter', 'python-fu-eval',
                                            '-b', '-', '--quit'],
                                 feed: true,
-                                console: true,
+                                console: true, #needed to not get disordered and lost on fast ninja output and
+                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                 build_by_default: true,
                                 env: gimp_run_env)
 
@@ -458,7 +473,8 @@ if get_option('dmg')
                                       '--batch-interpreter', 'python-fu-eval',
                                       '-b', '-', '--quit'],
                            feed: true,
-                           console: true,
+                           console: true, #needed to not get disordered and lost on fast ninja output and
+                                          #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: true,
                            env: gimp_run_env)
 endif

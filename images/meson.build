@@ -12,7 +12,8 @@ splash = custom_target('gimp-splash.png',
                                   '--batch-interpreter', 'python-fu-eval',
                                   '-b', '-', '--quit'],
                        feed: true,
-                       console: true,
+                       console: true, #needed to not get disordered and lost on fast ninja output and
+                                      #to spot very hard-to-debug stuckness (see #11385 and #16202)
                        build_by_default: true,
                        env: gimp_run_env,
                        install_dir: gimpdatadir / 'images',
@@ -35,7 +36,8 @@ if get_option('windows-installer')
                                            '--batch-interpreter', 'python-fu-eval',
                                            '-b', '-', '--quit'],
                                 feed: true,
-                                console: true,
+                                console: true, #needed to not get disordered and lost on fast ninja output and
+                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                 build_by_default: true,
                                 env: gimp_run_env)
 endif
