@@ -12,6 +12,7 @@ splash = custom_target('gimp-splash.png',
                                   '--batch-interpreter', 'python-fu-eval',
                                   '-b', '-', '--quit'],
                        feed: true,
+                       console: true,
                        build_by_default: true,
                        env: gimp_run_env,
                        install_dir: gimpdatadir / 'images',
@@ -34,6 +35,7 @@ if get_option('windows-installer')
                                            '--batch-interpreter', 'python-fu-eval',
                                            '-b', '-', '--quit'],
                                 feed: true,
+                                console: true,
                                 build_by_default: true,
                                 env: gimp_run_env)
 endif
