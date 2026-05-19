@@ -12,7 +12,6 @@ legacy_icons_12 = [
   '12/gimp-quick-mask-off.png',
   '12/gimp-quick-mask-on.png',
   '12/gimp-swap-colors.png',
-  '12/gimp-visible.png',
   '12/gimp-zoom-follow-window.png',
 ]
 legacy_icons_16 = [
@@ -161,7 +160,6 @@ legacy_icons_18 = [
 ]
 legacy_icons_20 = [
   '20/gimp-linked.png',
-  '20/gimp-visible.png',
 ]
 legacy_icons_22 = [
   '22/gimp-char-picker.png',
@@ -497,6 +495,7 @@ legacy_temporary_scalable = [
   '../Default/scalable/gimp-shred.svg',
   '../Default/scalable/gimp-smartphone.svg',
   '../Default/scalable/gimp-symmetry.svg',
+  '../Default/scalable/gimp-visible.svg',
   '../Default/scalable/gtk-ok.svg',
   '../Default/scalable/gtk-no.svg',
   '../Default/scalable/gtk-yes.svg',
