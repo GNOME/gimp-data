@@ -77,10 +77,14 @@ gimp-center
 gimp-channel
 gimp-channel-alpha
 gimp-channel-blue
+gimp-channel-cyan
 gimp-channel-gray
 gimp-channel-green
 gimp-channel-indexed
+gimp-channel-key
+gimp-channel-magenta
 gimp-channel-red
+gimp-channel-yellow
 gimp-channels
 gimp-char-picker
 gimp-clipboard
