@@ -73,6 +73,7 @@ def export_img(sizes, type='none', type_param='none'):
         else:
             config.set_property("file", Gio.file_new_for_path(export_dir + 'fileicon' + variant + '.@OUTPUT_TYPE@'))
         v = Gimp.Procedure.run(procedure, config)
+        image.delete()
         if v.index(0) != Gimp.PDBStatusType.SUCCESS:
             sys.exit(70)
 

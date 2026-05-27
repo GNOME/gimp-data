@@ -53,6 +53,7 @@ def export_relative_img(scale):
   scale_str = str(scale)
   config.set_property("file", Gio.file_new_for_path(export_dir + '@NAME@.scale-' + scale_str + '.png'))
   v = Gimp.Procedure.run(procedure, config)
+  image.delete()
   if v.index(0) != Gimp.PDBStatusType.SUCCESS:
     sys.exit(70)
 
@@ -112,6 +113,8 @@ def export_absolute_img(size):
       v = Gimp.Procedure.run(procedure, config)
       if v.index(0) != Gimp.PDBStatusType.SUCCESS:
         sys.exit(70)
+
+  image.delete()
 
 
 export_relative_img(100)

@@ -61,6 +61,7 @@ else:
   drawable = tmp_image.flatten()
 layer6 = Gimp.Layer.new_from_drawable (drawable, image)
 image.insert_layer(layer6, None, 6)
+tmp_image.delete()
 
 # 4. Merging the background and Wilber on top.
 image.merge_down(layer2, Gimp.MergeType.CLIP_TO_IMAGE)
@@ -70,5 +71,6 @@ drawables = image.get_selected_drawables()
 config.set_property("image", image)
 config.set_property("file", Gio.file_new_for_path(output_path))
 v = Gimp.Procedure.run(procedure, config)
+image.delete()
 if v.index(0) != Gimp.PDBStatusType.SUCCESS:
   sys.exit(70)
