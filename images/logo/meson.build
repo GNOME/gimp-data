@@ -90,6 +90,10 @@ install_data('gimp-logo.svg',
 
 ## Icons used by the .exe installer package ##
 if get_option('windows-installer')
+  data_env = gimp_run_env
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-svg', separator: ':')
+  data_env.append('GIMP_TESTING_PLUG_INS', 'file-ico',        separator: ':')
+
   # `.ico` files are used in gimp.rc and gimp-plug-ins.rc compiled in GIMP for
   # Windows. Since these are circular dependencies (GIMP needs them on Windows
   # and the icons need GIMP to be created), we committed both ico files into
@@ -112,7 +116,7 @@ if get_option('windows-installer')
                            console: true, #needed to not get disordered and lost on fast ninja output and
                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: false,
-                           env: gimp_run_env)
+                           env: data_env)
 
 
   ## Icon for .xcf and other fileicon
@@ -134,7 +138,7 @@ if get_option('windows-installer')
                                console: true, #needed to not get disordered and lost on fast ninja output and
                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: false,
-                               env: gimp_run_env)
+                               env: data_env)
 
 
   ## Similarly `plug-ins.ico` is used in gimp-plug-ins.rc.
@@ -153,7 +157,7 @@ if get_option('windows-installer')
                                console: true, #needed to not get disordered and lost on fast ninja output and
                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: false,
-                               env: gimp_run_env)
+                               env: data_env)
 
 
   ## Inno installer: setup .exe icon
@@ -172,10 +176,11 @@ if get_option('windows-installer')
                             console: true, #needed to not get disordered and lost on fast ninja output and
                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
-                            env: gimp_run_env)
+                            env: data_env)
 
 
   ## Inno installer: right-top icon (Windows) ##
+  data_env.append('GIMP_TESTING_PLUG_INS', 'file-bmp', separator: ':')
   gen_gimp_bmp = configure_file(input : 'gen-gimp-bmp.py.in',
                                 output : 'gen-gimp-bmp.py',
                                 configuration : gen_conf)
@@ -190,11 +195,15 @@ if get_option('windows-installer')
                                console: true, #needed to not get disordered and lost on fast ninja output and
                                               #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                build_by_default: true,
-                               env: gimp_run_env)
+                               env: data_env)
 endif
 
 
 if get_option('ms-store')
+  data_env = gimp_run_env
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-svg', separator: ':')
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-png', separator: ':')
+
   ## MS Store: AppList/Square44x44Logo (Windows) ##
   icon_name = 'AppList'
   gen_icon_conf = configuration_data()
@@ -218,7 +227,7 @@ if get_option('ms-store')
                           console: true, #needed to not get disordered and lost on fast ninja output and
                                          #to spot very hard-to-debug stuckness (see #11385 and #16202)
                           build_by_default: true,
-                          env: gimp_run_env)
+                          env: data_env)
 
 
   ## MS Store: StoreLogo (Windows) ##
@@ -244,7 +253,7 @@ if get_option('ms-store')
                             console: true, #needed to not get disordered and lost on fast ninja output and
                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
-                            env: gimp_run_env)
+                            env: data_env)
 
 
   ## MS Store: MedTile/Square150x150Logo (Windows) ##
@@ -271,7 +280,7 @@ if get_option('ms-store')
                            console: true, #needed to not get disordered and lost on fast ninja output and
                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: true,
-                           env: gimp_run_env)
+                           env: data_env)
 
 
   ## MS Store: SmallTile/Square71x71Logo (Windows 10 only) ##
@@ -298,7 +307,7 @@ if get_option('ms-store')
                              console: true, #needed to not get disordered and lost on fast ninja output and
                                             #to spot very hard-to-debug stuckness (see #11385 and #16202)
                              build_by_default: true,
-                             env: gimp_run_env)
+                             env: data_env)
 
 
   ## MS Store: WideTile/Wide310x150Logo (Windows 10 only) ##
@@ -325,7 +334,7 @@ if get_option('ms-store')
                             console: true, #needed to not get disordered and lost on fast ninja output and
                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
-                            env: gimp_run_env)
+                            env: data_env)
 
 
   ## MS Store: LargeTile/Square310x310Logo (Windows 10 only) ##
@@ -352,7 +361,7 @@ if get_option('ms-store')
                              console: true, #needed to not get disordered and lost on fast ninja output and
                                             #to spot very hard-to-debug stuckness (see #11385 and #16202)
                              build_by_default: true,
-                             env: gimp_run_env)
+                             env: data_env)
 
 
   ## fileicon icon (for XCF and other filetypes) ##
@@ -374,7 +383,7 @@ if get_option('ms-store')
                 console: true, #needed to not get disordered and lost on fast ninja output and
                                #to spot very hard-to-debug stuckness (see #11385 and #16202)
                 build_by_default: true,
-                env: gimp_run_env)
+                env: data_env)
 endif
 
 
@@ -382,6 +391,12 @@ endif
 # MACOS ICONS
 
 if get_option('dmg')
+  data_env = gimp_run_env
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-compressor', separator: ':')
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-svg',        separator: ':')
+  data_env.append('GIMP_TESTING_PLUG_INS', 'common/file-png',        separator: ':')
+  data_env.append('GIMP_TESTING_PLUG_INS', 'file-icns',              separator: ':')
+
   ## gimp.icns (macOS 15 and earlier) ##
   gen_gimp_icns_py = configure_file(input : 'gen-gimp-icns.py.in',
                                    output : 'gen-gimp-icns.py',
@@ -398,7 +413,7 @@ if get_option('dmg')
                             console: true, #needed to not get disordered and lost on fast ninja output and
                                            #to spot very hard-to-debug stuckness (see #11385 and #16202)
                             build_by_default: true,
-                            env: gimp_run_env)
+                            env: data_env)
 
   ## gimp.icon (macOS 26+)
   custom_target('copy-icon-json',
@@ -437,7 +452,7 @@ if get_option('dmg')
                                 console: true, #needed to not get disordered and lost on fast ninja output and
                                                #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                 build_by_default: true,
-                                env: gimp_run_env)
+                                env: data_env)
 
   ## .VolumeIcon.icns (macOS) ##
   gen_gimp_dmg_icns_py = configure_file(input : 'gen-gimp-dmg-icns.py.in',
@@ -455,7 +470,7 @@ if get_option('dmg')
                                 console: true, #needed to not get disordered and lost on fast ninja output and
                                                #to spot very hard-to-debug stuckness (see #11385 and #16202)
                                 build_by_default: true,
-                                env: gimp_run_env)
+                                env: data_env)
 
   ## gimp-dmg.png (macOS) ##
   gen_gimp_dmg_conf = configuration_data()
@@ -476,5 +491,5 @@ if get_option('dmg')
                            console: true, #needed to not get disordered and lost on fast ninja output and
                                           #to spot very hard-to-debug stuckness (see #11385 and #16202)
                            build_by_default: true,
-                           env: gimp_run_env)
+                           env: data_env)
 endif
