@@ -126,7 +126,7 @@ xml_content  = '<?xml version="1.0" encoding="UTF-8"?>\n'
 xml_content += '<gresources>\n'
 xml_content += '  <gresource prefix="/org/gimp/icons">\n'
 foreach file : icons_core
-  xml_content+='    <file preprocess="to-pixdata">'+ file +'</file>\n'
+  xml_content+='    <file>'+ file +'</file>\n'
 endforeach
 xml_content += '  </gresource>\n'
 xml_content += '</gresources>\n'
@@ -150,7 +150,7 @@ xml_content  = '<?xml version="1.0" encoding="UTF-8"?>\n'
 xml_content += '<gresources>\n'
 xml_content += '  <gresource prefix="/org/gimp/icons">\n'
 foreach file : icons_imgs
-  xml_content+='    <file preprocess="to-pixdata">'+ file +'</file>\n'
+  xml_content+='    <file>'+ file +'</file>\n'
 endforeach
 xml_content += '  </gresource>\n'
 xml_content += '</gresources>\n'
