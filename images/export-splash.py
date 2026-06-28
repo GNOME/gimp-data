@@ -29,9 +29,8 @@ def find_rc_layer(layers):
         return child
   return None
 
+rc_layer = find_rc_layer(image.get_layers())
 if Gimp.MINOR_VERSION % 2 == 0:
-  rc_layer = find_rc_layer(image.get_layers())
-
   if rc_layer is None:
     msg = 'ERROR: a text layer containing the text "RC" is mandatory for RC and stable splash images.'
     sys.stderr.write('v' * len(msg) + '\n')
@@ -39,10 +38,10 @@ if Gimp.MINOR_VERSION % 2 == 0:
     sys.stderr.write('^' * len(msg) + '\n')
     sys.exit(70)
 
-  if 'RC' not in Gimp.VERSION:
-    # This is a stable release (and not a release candidate).
-    # Drop the mandatory "RC" layer.
-    image.remove_layer(rc_layer)
+if rc_layer is not None and 'RC' not in Gimp.VERSION:
+  # This is not a release candidate.
+  # Drop the mandatory "RC" layer.
+  image.remove_layer(rc_layer)
 
 procedure = Gimp.get_pdb().lookup_procedure("file-png-export")
 config    = procedure.create_config()
