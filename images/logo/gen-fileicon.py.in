@@ -15,7 +15,7 @@ def export_img(sizes, type='none', type_param='none'):
         if type != 'scaled':
             scale = 100
         else:
-            scale = type_param        
+            scale = type_param
         image_size = max(sizes) * scale / 100
         image = Gimp.Image.new(image_size, image_size, Gimp.ImageBaseType.RGB)
         image.undo_disable()
@@ -24,7 +24,7 @@ def export_img(sizes, type='none', type_param='none'):
         for size in sizes:
             procedure   = Gimp.get_pdb().lookup_procedure("file-svg-load")
             config      = procedure.create_config()
-            
+
             # 1. Loading the "File" SVG base.
             config.set_property("file", Gio.file_new_for_path('@SRCDIR@/fileicon-base' + variant + '.svg'))
             base_size   = size * scale / 100
@@ -86,10 +86,9 @@ if '@OUTPUT_TYPE@' == 'ico':
     sizes       = [ 16, 32, 48, 256 ]
     # Quick Launch area:
     sizes      += [ 40 ]
-    # Additional sizes: we don't generate sizes: 8, 10 and 14 because we don't have
-    # pixel-perfect raster for these and it's so small that I wonder if it's worth
-    # it.
-    sizes      += [ 22, 24, 64, 96, 128 ]
+    # Additional HighDPI sizes: we don't generate sizes: 8, 10 and 14 because we don't have
+    # pixel-perfect raster for these and they would be too small for today standards.
+    sizes      += [ 20, 22, 24, 64, 96, 128 ]
 
     export_dir = 'build/windows/installer/'
 

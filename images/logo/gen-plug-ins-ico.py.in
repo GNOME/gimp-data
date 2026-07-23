@@ -14,10 +14,9 @@ output_path = '@SRCDIR@/plug-ins.ico'
 sizes       = [ 16, 32, 48, 256 ]
 # Quick Launch area:
 sizes      += [ 40 ]
-# Additional sizes: we don't generate sizes: 8, 10 and 14 because we don't have
-# pixel-perfect raster for these and it's so small that I wonder if it's worth
-# it.
-sizes      += [ 22, 24, 64, 96, 128 ]
+# Additional HighDPI sizes: we don't generate sizes: 8, 10 and 14 because we don't have
+# pixel-perfect raster for these and they would be too small for today standards.
+sizes      += [ 20, 22, 24, 64, 96, 128 ]
 # A bit of prettifying for the order of generated layers.
 sizes.sort()
 
