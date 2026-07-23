@@ -45,8 +45,6 @@ procedure = Gimp.get_pdb().lookup_procedure("file-ico-export")
 config    = procedure.create_config()
 drawables = image.get_selected_drawables()
 config.set_property("image", image)
-config.set_property("num-drawables", len(drawables))
-config.set_property("drawables", Gimp.ObjectArray.new(Gimp.Drawable, drawables, False))
 config.set_property("file", Gio.file_new_for_path(output_path))
 v = Gimp.Procedure.run(procedure, config)
 if v.index(0) != Gimp.PDBStatusType.SUCCESS:
