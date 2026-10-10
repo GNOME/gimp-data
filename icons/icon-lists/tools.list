@@ -65,6 +65,7 @@ gimp-tool-rotate
 gimp-tool-scale
 gimp-tool-seamless-clone
 gimp-tool-shadows-highlights
+gimp-tool-shape
 gimp-tool-shear
 gimp-tool-smudge
 gimp-tool-text

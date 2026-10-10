@@ -415,6 +415,7 @@ legacy_tools_scalable = [
   'scalable/gimp-tool-rotate.svg',
   'scalable/gimp-tool-scale.svg',
   'scalable/gimp-tool-seamless-clone.svg',
+  '../Default/scalable/gimp-tool-shape.svg',
   'scalable/gimp-tool-shear.svg',
   'scalable/gimp-tool-smudge.svg',
   'scalable/gimp-tool-text.svg',
